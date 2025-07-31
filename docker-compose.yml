@@ -1,0 +1,29 @@
+version: '3'
+services:
+  piscis_veterinaria:
+    build: veterinaria
+    ports:
+      -"8080:8080"
+    environment:
+      DB_NAME=jdbc:mysql://piscis_vet:3306/veterinaria_piscis?createDatabaseIfNotExist&serverTimezone=UTC
+      DB_USERNAME=admin
+      DB_PASSWORD=T202cdFc4+
+    restart: always
+    depends_on:
+      piscis_vet:
+        condition: service_healthy
+
+  piscis_vet:
+    image: mysql:9.2.0
+    ports:
+      -"3307:3306" 
+    environment:
+      MYSQL_ROOT_PASSWORD: T202cdFc4+
+      MYSQL_PASSWORD: T202cdFc4
+      MYSQL_DATABASE: veterinaria_piscis
+      MYSQL_USER: admin
+    restart: always
+    healthcheck:
+      test: ["CMD","mysqladmin","ping","localhost"]
+      timeout: 10s
+      retries: 10
