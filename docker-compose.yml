@@ -3,7 +3,7 @@ services:
   piscis_veterinaria:
     build: veterinaria
     ports:
-      -"8080:8080"
+      - 8080:8080
     environment:
       SPRING_DATASOURCE_URL=jdbc:mysql://piscis_vet:3306/veterinaria_piscis?serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME=admin
@@ -16,7 +16,7 @@ services:
   piscis_vet:
     image: mysql:9.2.0
     ports:
-      -"3307:3306" 
+      - 3307:3306 
     environment:
       MYSQL_ROOT_PASSWORD: T202cdFc4+
       MYSQL_DATABASE: veterinaria_piscis
