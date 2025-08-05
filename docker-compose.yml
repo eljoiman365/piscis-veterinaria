@@ -5,9 +5,9 @@ services:
     ports:
       -"8080:8080"
     environment:
-      DB_NAME=jdbc:mysql://piscis_vet:3306/veterinaria_piscis?createDatabaseIfNotExist&serverTimezone=UTC
-      DB_USERNAME=admin
-      DB_PASSWORD=T202cdFc4+
+      SPRING_DATASOURCE_URL=jdbc:mysql://piscis_vet:3306/veterinaria_piscis?serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME=admin
+      SPRING_DATASOURCE_PASSWORD=T202cdFc4+
     restart: always
     depends_on:
       piscis_vet:
@@ -19,9 +19,9 @@ services:
       -"3307:3306" 
     environment:
       MYSQL_ROOT_PASSWORD: T202cdFc4+
-      MYSQL_PASSWORD: T202cdFc4
       MYSQL_DATABASE: veterinaria_piscis
-      MYSQL_USER: admin
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: always
     healthcheck:
       test: ["CMD","mysqladmin","ping","localhost"]
