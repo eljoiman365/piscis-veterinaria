@@ -5,8 +5,8 @@ services:
       - 8080:8080
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://piscis_vet:3306/veterinaria_piscis?serverTimezone=UTC
-      SPRING_DATASOURCE_USERNAME: admin
-      SPRING_DATASOURCE_PASSWORD: T202cdFc4+
+      SPRING_DATASOURCE_USERNAME: xxxxxxx
+      SPRING_DATASOURCE_PASSWORD: xxxxxxx
     restart: always
     depends_on:
       piscis_vet:
@@ -17,7 +17,7 @@ services:
     ports:
       - 3307:3306 
     environment:
-      MYSQL_ROOT_PASSWORD: T202cdFc4+
+      MYSQL_ROOT_PASSWORD: xxxxxxx
       MYSQL_DATABASE: veterinaria_piscis
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -26,3 +26,4 @@ services:
       test: ["CMD","mysqladmin","ping","localhost"]
       timeout: 10s
       retries: 10
+https://github.com/eljoiman365/piscis-veterinaria/blob/main/docker-compose.yml
